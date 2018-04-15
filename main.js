@@ -1,5 +1,8 @@
-var youLikeMeat = false;
+var youLikeMeat = true;
+var myNum = 10;
 
 if (youLikeMeat) {
-	document.write("Here is the meaty menu ...");
+	document.write("This expression is true");
+} else {
+	document.write("myNum is not");
 }
