@@ -1,8 +1,8 @@
-function getAverage(a, b) {
-
-	var average = (a + b) / 2;
-	console.log(average);
-	return average;
-}
-var myResult = getAverage(7, 8);
-console.log("the average is " + myResult);
+var addBtn = document.querySelector(".add-employee-btn");
+addBtn.addEventListener("click", function () {
+	var li = document.createElement("li");
+	var list = document.querySelector(".employee-list");
+	var input = document.querySelector(".employee-name-input");
+	li.innerHTML = input.value;
+	list.appendChild(li);
+}, false);
