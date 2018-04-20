@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>JS Bin</title>
+	<style>
+		body::after {
+			content: "";
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: rgba(0, 0, 0, 0);
+			transition: background .7s;
+		}
+
+		body.modal-opened::after {
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+		.contact-me-modal .contact-form label {
+			display: block;
+		}
+
+		.contact-me-modal .contact-form .row {
+			margin-bottom: 10px;
+		}
+
+		.modal {
+			position: fixed;
+			z-index: -1;
+			background: white;
+			width: 450px;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			padding: 20px;
+			opacity: 0;
+			transition: opacity .7s;
+		}
+
+		.modal-opened .modal {
+			opacity: 1;
+			z-index: 999;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Witaj!</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, tempora.</p>
+	<button type="button" class="contact-me-btn">Contact me</button>
+	<div class="modal contact-me-modal">
+		<button type="button" class="close-btn">Close me</button>
+		<h2>Skontaktuj się ze mną</h2>
+		<form class="contact-form">
+			<div class="row">
+				<label for="firstname">Imię:</label><input type="text" id="firstname">
+			</div>
+			<div class="row">
+				<label for="firstname">Nazwisko:</label><input type="text" id="lastname">
+			</div>
+			<div class="row">
+				<label for="email">E-mail:</label><input type="email" id="email">
+			</div>
+			<div class="row">
+				<label for="msg-text">Treść:</label><textarea id="msg-text"></textarea>
+			</div>
+			<div class="row">
+				<button type="submit">Wyślij</button>
+			</div>
+		</form>
+	</div>
+	<script>
+		var contactMeBtn = document.querySelector(".contact-me-btn");
+		contactMeBtn.addEventListener("click", function() {
+			document.body.classList.add("modal-opened");
+		}, false);
+
+		var closeModalBtn = document.querySelector(".modal .close-btn");
+		closeModalBtn.addEventListener("click", function() {
+			document.body.classList.remove("modal-opened");
+		}, false);
+
+		document.addEventListener("keyup", function(evt) {
+			if (evt.keyCode === 27) {
+				document.body.classList.remove("modal-opened");
+			}
+		}, false);
+		var contactForm = document.querySelector(".contact-form");
+		contactForm.addEventListener("submit", function(evt) {
+			evt.preventDefault();
+			window.setTimeout(function() {
+				document.body.classList.remove("modal-opened");
+			}, 2000);
+
+		}, false);
+	</script>
+</body>
+
+</html>
